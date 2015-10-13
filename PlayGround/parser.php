@@ -17,7 +17,8 @@
          } 
 
 
-		if(!isset($_FILES['text_file'])||$_FILES['text_file']['type']!=="text/plian"){
+
+		if(!isset($_FILES['text_file'])||$_FILES['text_file']['type']!="text/plain"){
 			echo "<h2>Invalid File Selected</h2>";
 		}elseif(!isset($_POST['inputTitle'])){
 			echo "<h2>Please input a title</h2>";
@@ -47,7 +48,7 @@
 				if(strlen($value)!==0){
 					if(startsWith($value, "#"))
 						$value = "<h2>".$value."</h2>";
-					if(startsWithNumber($value))
+					if(startsWithNumber($value)||ctype_alpha($value[0]))
 						$value = "<p>".$value."</p>";
 					array_push($outputArray, $value);
 				}
